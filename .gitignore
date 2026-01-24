@@ -1,0 +1,95 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+/node_modules
+/node_modules/*
+!/node_modules/.bin
+!/node_modules/.cache
+/node_modules/.pnp
+.pnp.*
+.yarn/install-state.gz
+.yarn/unplugged
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# chanda-frontend (Next.js) specific
+/chanda-frontend/node_modules
+/chanda-frontend/.next
+/chanda-frontend/out
+/chanda-frontend/.env*
+!/chanda-frontend/.env.example
+/chanda-frontend/coverage
+/chanda-frontend/.vercel
+/chanda-frontend/.env
+
+# chanda-backend (Express.js) specific
+/chanda-backend/node_modules
+/chanda-backend/.env*
+!/chanda-backend/.env.example
+/chanda-backend/coverage
+/chanda-backend/dist
+/chanda-backend/build
+/chanda-backend/logs
+/chanda-backend/tmp
+/chanda-backend/.env
+
+# Root level ignores
+/.env*
+!/.env.example
+/coverage
+/build
+/dist
+/out
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.DS_Store
+*.pem
+*.key
+*.cert
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE/Editor
+.vscode/settings.json
+.idea
+*.swp
+*.swo
+*~
+
+# Testing
+/coverage
+/.nyc_output
+/jest-*.json
+
+# Production builds
+/build
+/dist
+/out
+
+# Vercel/Deployment
+.vercel
+.netlify
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Temporary files
+*.tmp
+*.temp
