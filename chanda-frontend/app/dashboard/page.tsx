@@ -71,7 +71,7 @@ export default function DashboardPage() {
       <header className="border-b sticky top-0 bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold hover:opacity-80">
-            👹 Chanda Hell
+            💰 চাঁন্দা Management
           </Link>
 
           <nav className="flex items-center gap-4">

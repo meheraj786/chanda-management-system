@@ -11,20 +11,20 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const expenseData = [
-  { name: 'Microphone Setup', value: 40, color: '#ff7c7c' },
-  { name: 'Food & Drinks', value: 30, color: '#8dd1e1' },
-  { name: 'Sound System', value: 15, color: '#82ca9d' },
-  { name: 'Decorations', value: 10, color: '#ffc658' },
-  { name: 'Admin Fees', value: 5, color: '#d084d0' },
+  { name: 'অফিস মেইনটেইন', value: 40, color: '#ff7c7c' },
+  { name: 'প্রোগ্রাম, মিটিং, র‍্যালি', value: 30, color: '#8dd1e1' },
+  { name: 'বড় নেতা', value: 15, color: '#82ca9d' },
+  { name: 'পাতি নেতা', value: 10, color: '#ffc658' },
+  { name: 'অন্যান্য', value: 5, color: '#d084d0' },
 ];
 
 export function ExpenseChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Mock Expense Breakdown</CardTitle>
+        <CardTitle> চাঁন্দা খরচের খাত </CardTitle>
         <p className="text-xs text-muted-foreground mt-2">
-          Where your guilt money goes... or should go 🤥
+          আপনার দেয়া চাঁন্দা আমরা সম্মান, ভালবাসা ও বিশ্বস্ততা  সঙ্গে ব্যয় করি 
         </p>
       </CardHeader>
       <CardContent>

@@ -1,112 +1,112 @@
-'use client';
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '@/app/contexts/AuthContext';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Slider } from '@/components/ui/slider';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { donationAPI } from '@/lib/api';
-import { useToast } from '@/hooks/use-toast';
+} from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { donationAPI } from "@/lib/api";
+import { useToast } from "@/hooks/use-toast";
 
 const PROFESSIONS = [
-  { value: 'Doctor', minAmount: 5000 },
-  { value: 'Engineer', minAmount: 4000 },
-  { value: 'Teacher', minAmount: 1000 },
-  { value: 'Student', minAmount: 10 },
-  { value: 'Businessman', minAmount: 10000 },
-  { value: 'Unemployed', minAmount: 1 },
-  { value: 'Others', minAmount: 100 },
+  { value: "Doctor", minAmount: 5000 },
+  { value: "Engineer", minAmount: 4000 },
+  { value: "Teacher", minAmount: 1000 },
+  { value: "Student", minAmount: 10 },
+  { value: "Businessman", minAmount: 10000 },
+  { value: "Unemployed", minAmount: 1 },
+  { value: "Others", minAmount: 100 },
 ];
 
 const DISTRICTS = [
-  'Dhaka',
-  'Chittagong',
-  'Sylhet',
-  'Khulna',
-  'Rajshahi',
-  'Barisal',
-  'Rangpur',
-  'Mymensingh',
-  'Comilla',
-  'Narayanganj',
-  'Pabna',
-  'Jashore',
-  'Jhenaidah',
-  'Bogra',
-  'Dinajpur',
-  'Kurigram',
-  'Gazipur',
-  'Shariatpur',
-  'Madaripur',
-  'Faridpur',
-  'Tangail',
-  'Munshiganj',
-  'Pirojpur',
-  'Jhalokati',
-  'Patuakhali',
-  'Bhola',
-  'Sunamganj',
-  'Habiganj',
-  'Maulvibazar',
-  'Lalmonirhat',
-  'Nilphamari',
-  'Thakurgaon',
-  'Panchagarh',
-  'Netrokona',
-  'Kishoreganj',
-  'Jamalpur',
-  'Sherpur',
-  'Barguna',
-  'Satkhira',
-  'Bagerhat',
-  'Piridpur',
-  'Chunarughat',
-  'Feni',
-  'Noakhali',
-  'Chandpur',
-  'Cox\'s Bazar',
-  'Bandarban',
-  'Khagrachari',
-  'Rajbari',
-  'Narail',
-  'Manikganj',
-  'Gopalganj',
-  'Narsingdi',
-  'Habiganj',
-  'Netrokona',
-  'Sunamganj',
-  'Brahmanbaria',
-  'Habiganj',
-  'Moulvibazar',
-  'Sylhet',
-  'Sunamganj',
-  'Barisal',
-  'Bhola',
-  'Jhalokati',
-  'Patuakhali',
-  'Pirojpur',
+  "Dhaka",
+  "Chittagong",
+  "Sylhet",
+  "Khulna",
+  "Rajshahi",
+  "Barisal",
+  "Rangpur",
+  "Mymensingh",
+  "Comilla",
+  "Narayanganj",
+  "Pabna",
+  "Jashore",
+  "Jhenaidah",
+  "Bogra",
+  "Dinajpur",
+  "Kurigram",
+  "Gazipur",
+  "Shariatpur",
+  "Madaripur",
+  "Faridpur",
+  "Tangail",
+  "Munshiganj",
+  "Pirojpur",
+  "Jhalokati",
+  "Patuakhali",
+  "Bhola",
+  "Sunamganj",
+  "Habiganj",
+  "Maulvibazar",
+  "Lalmonirhat",
+  "Nilphamari",
+  "Thakurgaon",
+  "Panchagarh",
+  "Netrokona",
+  "Kishoreganj",
+  "Jamalpur",
+  "Sherpur",
+  "Barguna",
+  "Satkhira",
+  "Bagerhat",
+  "Piridpur",
+  "Chunarughat",
+  "Feni",
+  "Noakhali",
+  "Chandpur",
+  "Cox's Bazar",
+  "Bandarban",
+  "Khagrachari",
+  "Rajbari",
+  "Narail",
+  "Manikganj",
+  "Gopalganj",
+  "Narsingdi",
+  "Habiganj",
+  "Netrokona",
+  "Sunamganj",
+  "Brahmanbaria",
+  "Habiganj",
+  "Moulvibazar",
+  "Sylhet",
+  "Sunamganj",
+  "Barisal",
+  "Bhola",
+  "Jhalokati",
+  "Patuakhali",
+  "Pirojpur",
 ];
 
 export default function DonatePage() {
-  const [name, setName] = useState('');
-  const [profession, setProfession] = useState('');
-  const [district, setDistrict] = useState('');
+  const [name, setName] = useState("");
+  const [profession, setProfession] = useState("");
+  const [district, setDistrict] = useState("");
   const [amount, setAmount] = useState(100);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const { isAuthenticated, user } = useAuth();
   const { toast } = useToast();
@@ -117,10 +117,10 @@ export default function DonatePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (!name || !profession || !district || !amount) {
-      setError('All fields are required');
+      setError("All fields are required");
       return;
     }
 
@@ -141,16 +141,16 @@ export default function DonatePage() {
 
       setSuccess(true);
       toast({
-        title: 'Donation Successful!',
-        description: 'Thanks! Your chanda will fund more guilt popups. 😈',
+        title: "Donation Successful!",
+        description: "Thanks! Your chanda will fund more guilt popups. 😈",
         duration: 5000,
       });
 
       setTimeout(() => {
-        router.push('/');
+        router.push("/");
       }, 2000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Donation failed');
+      setError(err instanceof Error ? err.message : "Donation failed");
     } finally {
       setLoading(false);
     }
@@ -162,7 +162,9 @@ export default function DonatePage() {
         <Card className="w-full max-w-md">
           <CardContent className="pt-6 text-center">
             <div className="text-6xl mb-4">🎉</div>
-            <h2 className="text-2xl font-bold mb-2">Thank You for Your Guilt!</h2>
+            <h2 className="text-2xl font-bold mb-2">
+              Thank You for Your Guilt!
+            </h2>
             <p className="text-muted-foreground mb-4">
               Your donation has been recorded. The guilt gods are pleased.
             </p>
@@ -180,7 +182,7 @@ export default function DonatePage() {
       <header className="border-b sticky top-0 bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold hover:opacity-80">
-            👹 Chanda Hell
+            💰 চাঁন্দা Management
           </Link>
           <div className="flex gap-2">
             <Link href="/">
@@ -197,7 +199,8 @@ export default function DonatePage() {
           <CardHeader>
             <CardTitle className="text-3xl">Guilt Transfer Portal</CardTitle>
             <p className="text-muted-foreground mt-2">
-              Convert your guilt into cold hard donations. No card needed. All fake.
+              Convert your guilt into cold hard donations. No card needed. All
+              fake.
             </p>
           </CardHeader>
           <CardContent>
@@ -283,13 +286,16 @@ export default function DonatePage() {
               {isAuthenticated && (
                 <Alert>
                   <AlertDescription>
-                    Logged in as: {user?.email} - This donation will be linked to your account.
+                    Logged in as: {user?.email} - This donation will be linked
+                    to your account.
                   </AlertDescription>
                 </Alert>
               )}
 
               <div className="bg-muted p-4 rounded-lg">
-                <p className="text-sm font-medium mb-2">Suggested Donations by Profession:</p>
+                <p className="text-sm font-medium mb-2">
+                  Suggested Donations by Profession:
+                </p>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   {PROFESSIONS.map((p) => (
                     <li key={p.value}>
@@ -305,7 +311,7 @@ export default function DonatePage() {
                 className="w-full bg-green-600 hover:bg-green-700 text-white"
                 disabled={loading}
               >
-                {loading ? 'Processing Guilt...' : 'Donate & Embrace Guilt'}
+                {loading ? "Processing Guilt..." : "Donate & Embrace Guilt"}
               </Button>
             </form>
           </CardContent>

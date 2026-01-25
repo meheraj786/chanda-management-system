@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { useAuth } from '@/app/contexts/AuthContext';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useAuth } from "@/app/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Table,
   TableBody,
@@ -14,8 +14,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { userAPI } from '@/lib/api';
+} from "@/components/ui/table";
+import { userAPI } from "@/lib/api";
 
 interface Donation {
   _id: string;
@@ -34,7 +34,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {
-      router.push('/auth/login');
+      router.push("/auth/login");
       return;
     }
 
@@ -43,7 +43,7 @@ export default function DashboardPage() {
         const response = await userAPI.getUserDonations();
         setDonations(response.data);
       } catch (error) {
-        console.error('Error fetching donations:', error);
+        console.error("Error fetching donations:", error);
       } finally {
         setLoading(false);
       }
@@ -71,7 +71,7 @@ export default function DashboardPage() {
       <header className="border-b sticky top-0 bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold hover:opacity-80">
-            👹 Chanda Hell
+            💰 চাঁন্দা Management
           </Link>
 
           <nav className="flex items-center gap-4">
@@ -81,15 +81,9 @@ export default function DashboardPage() {
               </Button>
             </Link>
             <Link href="/donate">
-              <Button size="sm">
-                Donate
-              </Button>
+              <Button size="sm">Donate</Button>
             </Link>
-            <Button
-              onClick={logout}
-              variant="outline"
-              size="sm"
-            >
+            <Button onClick={logout} variant="outline" size="sm">
               Logout
             </Button>
           </nav>
@@ -118,7 +112,7 @@ export default function DashboardPage() {
                 <div>
                   <p className="text-sm text-muted-foreground">Member Since</p>
                   <p className="text-lg font-medium">
-                    {user?.id ? new Date().toLocaleDateString() : 'N/A'}
+                    {user?.id ? new Date().toLocaleDateString() : "N/A"}
                   </p>
                 </div>
               </div>
@@ -130,10 +124,14 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium">Total Donated</CardTitle>
+              <CardTitle className="text-sm font-medium">
+                Total Donated
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">৳ {totalDonated.toLocaleString()}</div>
+              <div className="text-3xl font-bold">
+                ৳ {totalDonated.toLocaleString()}
+              </div>
               <p className="text-xs text-muted-foreground mt-1">
                 You've succumbed to the guilt
               </p>
@@ -142,7 +140,9 @@ export default function DashboardPage() {
 
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium">Number of Donations</CardTitle>
+              <CardTitle className="text-sm font-medium">
+                Number of Donations
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">{donations.length}</div>
@@ -159,7 +159,10 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between">
               <CardTitle>Your Donation History</CardTitle>
               <Link href="/donate">
-                <Button size="sm" className="bg-green-600 hover:bg-green-700 text-white">
+                <Button
+                  size="sm"
+                  className="bg-green-600 hover:bg-green-700 text-white"
+                >
                   Add Another Donation
                 </Button>
               </Link>
@@ -215,9 +218,9 @@ export default function DashboardPage() {
           <CardContent className="pt-6">
             <h3 className="text-lg font-bold mb-2">Keep the Guilt Alive!</h3>
             <p className="text-muted-foreground mb-4">
-              Your donation record is proof of your commitment to the guilt culture.
-              The more you donate, the more respected you'll be in the leaderboard.
-              Or maybe not. Who knows?
+              Your donation record is proof of your commitment to the guilt
+              culture. The more you donate, the more respected you'll be in the
+              leaderboard. Or maybe not. Who knows?
             </p>
             <div className="flex gap-4">
               <Link href="/donate">
@@ -226,9 +229,7 @@ export default function DashboardPage() {
                 </Button>
               </Link>
               <Link href="/">
-                <Button variant="outline">
-                  View Leaderboard
-                </Button>
+                <Button variant="outline">View Leaderboard</Button>
               </Link>
             </div>
           </CardContent>

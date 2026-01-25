@@ -8,7 +8,7 @@ A complete MERN (MongoDB, Express, React/Next.js, Node.js) parody application th
 
 Chanda Management is a sarcastic web application designed to humorously track and visualize the donation culture in Bangladesh. Features include:
 
-- **Entry Guilt Modal**: Greets users with a welcome message to enter the "Chanda Hell"
+- **Entry Guilt Modal**: Greets users with a welcome message to enter the "💰 চাঁন্দা Management"
 - **Interactive Dashboard**: View donation statistics across districts, professions, and leaderboards
 - **Donation Form**: A sarcastic form to submit fake donations with profession-based minimum amounts
 - **Authentication System**: Register and login to track personal donation history
@@ -77,6 +77,7 @@ Chanda Management is a sarcastic web application designed to humorously track an
 ## Tech Stack
 
 ### Backend
+
 - **Express.js**: Web framework
 - **MongoDB + Mongoose**: Database
 - **JWT (jsonwebtoken)**: Authentication
@@ -85,6 +86,7 @@ Chanda Management is a sarcastic web application designed to humorously track an
 - **Cloudinary**: Image upload (optional)
 
 ### Frontend
+
 - **Next.js 16**: React framework with App Router
 - **Shadcn UI**: Component library
 - **Tailwind CSS v4**: Styling
@@ -96,6 +98,7 @@ Chanda Management is a sarcastic web application designed to humorously track an
 ## Setup Instructions
 
 ### Prerequisites
+
 - Node.js 18+
 - MongoDB (local or cloud URI)
 - npm or yarn
@@ -103,21 +106,25 @@ Chanda Management is a sarcastic web application designed to humorously track an
 ### Backend Setup
 
 1. Navigate to the backend directory:
+
 ```bash
 cd backend
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Create a `.env` file from `.env.example`:
+
 ```bash
 cp .env.example .env
 ```
 
 4. Update `.env` with your configuration:
+
 ```
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/chanda-management
@@ -130,6 +137,7 @@ SEED_DB=true
 ```
 
 5. Start the server:
+
 ```bash
 npm run dev
 ```
@@ -139,26 +147,31 @@ The backend API will be available at `http://localhost:5000`
 ### Frontend Setup
 
 1. Navigate to the frontend directory:
+
 ```bash
 cd frontend
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Create a `.env.local` file from `.env.example`:
+
 ```bash
 cp .env.example .env.local
 ```
 
 4. Update `.env.local`:
+
 ```
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
 5. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -168,6 +181,7 @@ The frontend will be available at `http://localhost:3000`
 ## Features
 
 ### 1. Home Page (/)
+
 - Entry guilt modal on first visit
 - District-wise donation statistics (bar chart)
 - Profession-wise breakdown (pie chart)
@@ -177,6 +191,7 @@ The frontend will be available at `http://localhost:3000`
 - Call-to-action buttons to donate
 
 ### 2. Donation Form (/donate)
+
 - Name field
 - Profession dropdown (Doctor, Engineer, Teacher, Student, Businessman, Unemployed, Others)
 - District selector (all 64 Bangladesh districts)
@@ -186,6 +201,7 @@ The frontend will be available at `http://localhost:3000`
 - Form validation with error handling
 
 ### 3. Authentication System (/auth/login, /auth/register)
+
 - User registration with email and password
 - Login with JWT token generation
 - Secure password hashing with bcryptjs
@@ -193,6 +209,7 @@ The frontend will be available at `http://localhost:3000`
 - Protected routes (dashboard only accessible when logged in)
 
 ### 4. User Dashboard (/dashboard)
+
 - User profile information
 - Total donated amount
 - Number of donations
@@ -201,6 +218,7 @@ The frontend will be available at `http://localhost:3000`
 - Motivational (sarcastic) messages
 
 ### 5. Charts & Analytics
+
 - **District-wise Chart**: Bar chart showing total donations per district
 - **Profession-wise Chart**: Pie chart showing donations by profession
 - **Expense Chart**: Mock pie chart of where donations go
@@ -209,12 +227,14 @@ The frontend will be available at `http://localhost:3000`
 ## API Endpoints
 
 ### User Endpoints
+
 - `POST /api/users/register` - Register a new user
 - `POST /api/users/login` - User login
 - `GET /api/users/me` - Get current user (requires auth)
 - `GET /api/users/donations` - Get user's donations (requires auth)
 
 ### Donation Endpoints
+
 - `POST /api/donations` - Create a new donation
 - `GET /api/donations` - Get all donations
 - `GET /api/donations/stats/districts` - Get district-wise statistics
@@ -226,10 +246,12 @@ The frontend will be available at `http://localhost:3000`
 The application includes a seed function that creates initial mock data when `SEED_DB=true` is set in the backend `.env` file.
 
 The seed data includes:
+
 - 5 sample users
 - 50 mock donations across various districts and professions
 
 To seed the database:
+
 1. Set `SEED_DB=true` in `.env`
 2. Start the backend server
 
@@ -258,6 +280,7 @@ The donation form suggests different minimum amounts based on profession:
 ## Styling
 
 The application uses:
+
 - **Tailwind CSS v4**: Utility-first CSS framework
 - **Shadcn UI**: Pre-built, accessible components
 - **Custom Components**: EntryGuiltModal, GuiltPopup, charts, etc.
@@ -296,6 +319,7 @@ The application uses:
 ## Deployment
 
 ### Backend (Vercel, Heroku, or AWS)
+
 ```bash
 # Build
 npm run build
@@ -305,6 +329,7 @@ npm start
 ```
 
 ### Frontend (Vercel, Netlify)
+
 ```bash
 # Build
 npm run build
@@ -316,6 +341,7 @@ npm start
 ## Environment Variables Summary
 
 ### Backend (.env)
+
 ```
 PORT=5000
 MONGO_URI=mongodb://your-connection-string
@@ -328,6 +354,7 @@ SEED_DB=true
 ```
 
 ### Frontend (.env.local)
+
 ```
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
@@ -335,21 +362,25 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ## Common Issues & Solutions
 
 ### Issue: "MongoDB connection failed"
+
 - Ensure MongoDB is running
 - Check MONGO_URI in .env is correct
 - Verify MongoDB credentials
 
 ### Issue: "CORS error from frontend"
+
 - Check FRONTEND_URL in backend .env
 - Ensure frontend URL matches exactly
 - Check backend CORS middleware configuration
 
 ### Issue: "401 Unauthorized" errors
+
 - Verify JWT token is being sent with requests
 - Check token expiration (set to 7 days)
 - Ensure token is stored in localStorage after login
 
 ### Issue: Charts not loading
+
 - Check if API is returning data correctly
 - Verify Recharts dependency is installed
 - Check browser console for errors
@@ -383,6 +414,7 @@ This project is a humorous parody and is provided as-is for educational and ente
 ## Support
 
 For issues or questions:
+
 1. Check the troubleshooting section above
 2. Review the code comments in key files
 3. Check browser/server console logs
@@ -390,4 +422,4 @@ For issues or questions:
 
 ---
 
-**Remember**: This is all for laughs. May your guilt be minimal and your donations be purely fictional! 👹
+**Remember**: This is all for laughs. May your guilt be minimal and your donations be purely fictional!
