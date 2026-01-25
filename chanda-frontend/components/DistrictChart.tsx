@@ -55,7 +55,7 @@ export function DistrictChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>District-wise Total Chanda Collected</CardTitle>
+        <CardTitle>বিভাগ অনুযায়ী চাঁদার চ্যাম্পিয়নশিপ টেবিল</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>
@@ -65,7 +65,7 @@ export function DistrictChart() {
             <YAxis />
             <Tooltip formatter={(value) => `BDT ${value}`} />
             <Legend />
-            <Bar dataKey="total" fill="#8884d8" name="Total Amount (BDT)" />
+            <Bar dataKey="total" fill="#8884d8" name="চাঁদা কালেকশন (BDT)" />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

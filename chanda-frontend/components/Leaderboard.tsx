@@ -57,9 +57,9 @@ export function Leaderboard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Top 10 Donators Leaderboard</CardTitle>
+        <CardTitle>টপ ১০ 'ভালো মানুষ' প্রতিযোগিতার বিজয়ী</CardTitle>
         <p className="text-xs text-muted-foreground mt-2">
-          The ones who couldn't escape the guilt
+          যারা ভাবছে চাঁদা দিলে স্বর্গে সিট কনফার্ম
         </p>
       </CardHeader>
       <CardContent>

@@ -141,8 +141,8 @@ export default function DonatePage() {
 
       setSuccess(true);
       toast({
-        title: "Donation Successful!",
-        description: "Thanks! Your chanda will fund more guilt popups. 😈",
+        title: "সাকসেস! তোমার পকেট হালকা হইছে!",
+        description: "ধন্যবাদ! এই চাঁদায় আমরা আরও শক্তিশালী হইছি!",
         duration: 5000,
       });
 
@@ -163,13 +163,13 @@ export default function DonatePage() {
           <CardContent className="pt-6 text-center">
             <div className="text-6xl mb-4">🎉</div>
             <h2 className="text-2xl font-bold mb-2">
-              Thank You for Your Guilt!
+              বিবেকের কাছে হার মানার জন্য ধন্যবাদ!
             </h2>
             <p className="text-muted-foreground mb-4">
-              Your donation has been recorded. The guilt gods are pleased.
+              চাঁদা এন্ট্রি হইছে।
             </p>
             <p className="text-sm text-muted-foreground">
-              Redirecting you back home...
+              এবার তোমাকে আবার গিল্টি করতে হোমে পাঠাচ্ছি...
             </p>
           </CardContent>
         </Card>
@@ -197,10 +197,9 @@ export default function DonatePage() {
       <div className="container mx-auto px-4 py-8">
         <Card className="w-full max-w-2xl mx-auto">
           <CardHeader>
-            <CardTitle className="text-3xl">Guilt Transfer Portal</CardTitle>
+            <CardTitle className="text-3xl">চাঁন্দা ট্রান্সফার পোর্টাল</CardTitle>
             <p className="text-muted-foreground mt-2">
-              Convert your guilt into cold hard donations. No card needed. All
-              fake.
+              গিল্ট টু ক্যাশ: কার্ড ছাড়া, সব ফেক, কিন্তু ফিলিং রিয়েল! 😂
             </p>
           </CardHeader>
           <CardContent>
@@ -213,7 +212,7 @@ export default function DonatePage() {
 
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium">
-                  Name *
+                  নাম  *
                 </label>
                 <Input
                   id="name"
@@ -227,7 +226,7 @@ export default function DonatePage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="profession" className="text-sm font-medium">
-                    Profession *
+                    পেশা  *
                   </label>
                   <Select value={profession} onValueChange={setProfession}>
                     <SelectTrigger id="profession">
@@ -245,7 +244,7 @@ export default function DonatePage() {
 
                 <div className="space-y-2">
                   <label htmlFor="district" className="text-sm font-medium">
-                    District *
+                    জেলা *
                   </label>
                   <Select value={district} onValueChange={setDistrict}>
                     <SelectTrigger id="district">
@@ -265,7 +264,7 @@ export default function DonatePage() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label htmlFor="amount" className="text-sm font-medium">
-                    Donation Amount: BDT {amount}
+                    চাঁন্দা পরিমান : BDT {amount}
                   </label>
                   <Slider
                     id="amount"
@@ -294,7 +293,7 @@ export default function DonatePage() {
 
               <div className="bg-muted p-4 rounded-lg">
                 <p className="text-sm font-medium mb-2">
-                  Suggested Donations by Profession:
+                 পেশাভিত্তিক প্রস্তাবিত চাঁন্দা পরিমান:
                 </p>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   {PROFESSIONS.map((p) => (
@@ -311,7 +310,7 @@ export default function DonatePage() {
                 className="w-full bg-green-600 hover:bg-green-700 text-white"
                 disabled={loading}
               >
-                {loading ? "Processing Guilt..." : "Donate & Embrace Guilt"}
+                {loading ? "..." : "চাঁন্দা ট্রান্সফার কর"}
               </Button>
             </form>
           </CardContent>

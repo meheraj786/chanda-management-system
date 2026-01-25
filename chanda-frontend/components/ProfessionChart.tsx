@@ -60,7 +60,7 @@ export function ProfessionChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Profession-wise Chanda Breakdown</CardTitle>
+        <CardTitle>পেশাভিত্তিক পকেট হালকা করার চার্ট</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>

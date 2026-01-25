@@ -10,6 +10,7 @@ import { DistrictChart } from "@/components/DistrictChart";
 import { ProfessionChart } from "@/components/ProfessionChart";
 import { ExpenseChart } from "@/components/ExpenseChart";
 import { Leaderboard } from "@/components/Leaderboard";
+import bannerBg from "@/public/bannerImg.png";
 
 export default function HomePage() {
   const { isAuthenticated, user, logout } = useAuth();
@@ -42,11 +43,11 @@ export default function HomePage() {
               <>
                 <Link href="/auth/login">
                   <Button variant="outline" size="sm">
-                    Login
+                    সদস্য লগইন
                   </Button>
                 </Link>
                 <Link href="/auth/register">
-                  <Button size="sm">Register</Button>
+                  <Button size="sm">সদস্য হও</Button>
                 </Link>
               </>
             )}
@@ -63,21 +64,23 @@ export default function HomePage() {
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8 space-y-8">
         {/* Hero Section */}
-        <section className="text-center py-8">
-          <h1 className="text-4xl font-bold mb-4">
+        <section className="text-center bg-cover bg-center py-30" style={{ backgroundImage: `url(${bannerBg.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+          <div className="bg-black/10 backdrop-blur-[1px] py-20">
+          <h1 className="text-4xl text-white font-bold mb-4">
             Welcome to 💰 চাঁন্দা Management
           </h1>
-          <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Where donations are tracked, guilt is weaponized, and shame is a
-            sport. Join thousands of people escaping (or failing to escape) the
-            burden of chanda.
+          <p className="text-lg  text-gray-200 mb-6 max-w-2xl mx-auto">
+            যেখানে তোমার অপরাধবোধকে ঠান্ডা টাকায় কনভার্ট করা হয়। বিবেকের চাপ
+            ছাড়ো, চাঁদা দিয়ে শান্তি কিনো 😏
           </p>
+          </div>
+
           <Link href="/donate">
             <Button
               size="lg"
               className="bg-green-600 hover:bg-green-700 text-white"
             >
-              Donate Now & Feel the Guilt
+              এখনই চাঁন্দা দে
             </Button>
           </Link>
         </section>
@@ -86,14 +89,14 @@ export default function HomePage() {
         <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium">
-                Total Donations
+              <CardTitle className="text-sm  font-medium">
+                টোটাল চাঁদা কালেকশন (আমাদের স্বপ্নের ফান্ড)
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">৳ 1,245,000</div>
               <p className="text-xs text-muted-foreground mt-1">
-                Guilt multiplied
+                বিবেকের মাল্টিপ্লিকেশন
               </p>
             </CardContent>
           </Card>
@@ -101,27 +104,25 @@ export default function HomePage() {
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium">
-                Active Donors
+                বিবেক জাগ্রত আত্মারা
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">542</div>
               <p className="text-xs text-muted-foreground mt-1">
-                People in denial
+                ধরা খাওয়া পাব্লিক্স
               </p>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium">
-                Districts Suffering
-              </CardTitle>
+              <CardTitle className="text-sm font-medium">জেলা সংখ্যা</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">64</div>
               <p className="text-xs text-muted-foreground mt-1">
-                All of Bangladesh
+                দেশের প্রতিটি কোণা
               </p>
             </CardContent>
           </Card>
@@ -140,17 +141,18 @@ export default function HomePage() {
 
         {/* CTA Section */}
         <section className="bg-muted py-12 rounded-lg text-center">
-          <h2 className="text-2xl font-bold mb-4">Join the Guilt Parade</h2>
+          <h2 className="text-2xl font-bold mb-4">
+            হাজার হাজার মানুষের সাথে জয়েন করো
+          </h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Stop fighting your conscience. Give in. Donate. Let the guilt
-            consume you.
+            বিবেকের সাথে আর লড়াই করো না। হার মানো। চাঁদা দাও।
           </p>
           <Link href="/donate">
             <Button
               size="lg"
               className="bg-green-600 hover:bg-green-700 text-white"
             >
-              Start Donating
+              এখনই চাঁন্দা দে
             </Button>
           </Link>
         </section>
