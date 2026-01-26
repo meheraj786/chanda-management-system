@@ -11,14 +11,40 @@ import { ProfessionChart } from "@/components/ProfessionChart";
 import { ExpenseChart } from "@/components/ExpenseChart";
 import { Leaderboard } from "@/components/Leaderboard";
 import bannerBg from "@/public/bannerImg.png";
+import { useEffect, useState } from "react";
+import { donationAPI } from "@/lib/api";
 
 export default function HomePage() {
   const { isAuthenticated, user, logout } = useAuth();
+    const [data, setData] = useState();
+    const [totalAmount, setTotalAmount] = useState(0);
+    const [amountLoading, setAmountLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await donationAPI.getAllDonations();
+          setData(response.data.length);
+          setTotalAmount(response.data.reduce((total: number, donation: any) => total + donation.amount, 0)); 
+        } catch (error) {
+          console.error('Error fetching donations:', error);
+        } finally {
+          setAmountLoading(false);
+        }
+      };
+  
+      fetchData();
+      const interval = setInterval(fetchData, 30000); 
+      return () => clearInterval(interval);
+    }, []);
+
+    console.log(totalAmount);
+    
 
   return (
     <main className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b sticky top-0 bg-background/95 backdrop-blur">
+      <header className="border-b sticky top-0 bg-background/95 backdrop-blur z-9999">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="text-2xl font-bold"> 💰 চাঁন্দা Management</div>
@@ -28,15 +54,15 @@ export default function HomePage() {
             {isAuthenticated ? (
               <>
                 <span className="text-sm text-muted-foreground">
-                  Welcome, {user?.email?.split("@")[0]}
+                  স্বাগতম, {user?.email?.split("@")[0]}
                 </span>
                 <Link href="/dashboard">
                   <Button variant="outline" size="sm">
-                    Dashboard
+                    চাঁদার ড্যাশ
                   </Button>
                 </Link>
                 <Button onClick={logout} variant="outline" size="sm">
-                  Logout
+                  আউট
                 </Button>
               </>
             ) : (
@@ -94,7 +120,7 @@ export default function HomePage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">৳ 1,245,000</div>
+              <div className="text-3xl font-bold">৳ {amountLoading ? '...' : totalAmount}</div>
               <p className="text-xs text-muted-foreground mt-1">
                 বিবেকের মাল্টিপ্লিকেশন
               </p>
@@ -108,7 +134,7 @@ export default function HomePage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">542</div>
+              <div className="text-3xl font-bold">{amountLoading ? '...' : data}</div>
               <p className="text-xs text-muted-foreground mt-1">
                 ধরা খাওয়া পাব্লিক্স
               </p>
