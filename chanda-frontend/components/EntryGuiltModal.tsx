@@ -15,14 +15,11 @@ export function EntryGuiltModal() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const hasEntered = localStorage.getItem("entered");
-    if (!hasEntered) {
-      setIsOpen(true);
-    }
+    // open the entry modal on first mount
+    setIsOpen(true);
   }, []);
 
   const handleEnter = () => {
-    localStorage.setItem("entered", "false");
     setIsOpen(false);
   };
 
@@ -35,18 +32,14 @@ export function EntryGuiltModal() {
           </DialogTitle>
           <DialogDescription className="text-base mt-4">
             দেশ, জাতি, পার্টি, চাঁন্দা হবে খাঁটি!
-            
             <br />
             <br />
             <br />
             <img
               src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWg2MTBuM2h6MjMxY2d1MG1sNG8wcTJxdDNwOW8yemk4czI1MGMzaSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o6Zt3OhbsQ5VLPmBW/giphy.gif"
               alt="chanda"
-              // width={100}
-              // height={100}
               className="mx-auto"
             />
-            {/* <iframe src="" width="384" height="480"  frameBorder="0" className="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/diyorg-dollar-splurge-rupee-BombwjrdBX0hDTvhZ5">via GIPHY</a></p> */}
           </DialogDescription>
         </DialogHeader>
 

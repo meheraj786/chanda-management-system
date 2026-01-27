@@ -1,21 +1,52 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { getRandomGuiltMessage } from '@/lib/guiltMessages';
-import { useToast } from '@/hooks/use-toast';
+import { useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
+
+const MESSAGES = [
+  {
+    title: "চাঁদা মনে করিয়ে দিলো",
+    description: "একটা মুখ ফুটে কই, আজ একটু চাঁদা দিলে ভালো লাগতো!",
+  },
+  {
+    title: "তোমার পার্টনার অনুরোধ করছে",
+    description: "দয়া করে একটু চাঁদা দাও — সবাই খুশি থাকবে।",
+  },
+  {
+    title: "জাতীয় দায়িত্ব",
+    description: "আজকের ছোট্ট দেওয়ায় বড় পরিবর্তন আসতে পারে।",
+  },
+  {
+    title: "গুড কামিং্স রিমাইন্ডার",
+    description: "একটা ছোট চাঁদাও অনেক মানুষকে সাহায্য করে।",
+  },
+  {
+    title: "মানসিক চাপ ছাড়াও চাঁদা",
+    description: "দুই মিনিট চাধা দেখা — এক টুকরো সাহায্য দাও।",
+  },
+  {
+    title: "চাঁদা এলার্ট 🔔",
+    description: "আজ তোমার নামটা হয়তো গাইডে আছে — চাঁদা দিলে গর্ব লাগবে!",
+  },
+];
 
 export function GuiltPopup() {
   const { toast } = useToast();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const message = getRandomGuiltMessage();
+    const showRandom = () => {
+      const idx = Math.floor(Math.random() * MESSAGES.length);
+      const msg = MESSAGES[idx];
       toast({
-        title: 'Chanda Alert 🔔',
-        description: message,
-        duration: 5000,
+        title: msg.title,
+        description: msg.description,
+        duration: 10000,
       });
-    }, 20000); // Every 20 seconds
+    };
+
+    // show one immediately, then every 5 seconds
+    showRandom();
+    const interval = setInterval(showRandom, 5000);
 
     return () => clearInterval(interval);
   }, [toast]);
