@@ -1,6 +1,6 @@
 const guiltMessages = [
   "Your district is lagging in chanda! Donate now?",
-  "Other engineers donated BDT 50,000 last week. Your move?",
+  "Other engineers donated ৳ 50,000 last week. Your move?",
   "Teachers from Dhaka are beating you in donations!",
   "The guilt never stops. Neither should you.",
   "Your unemployment is showing. Donate something!",

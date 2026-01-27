@@ -125,7 +125,7 @@ export default function DonatePage() {
     }
 
     if (amount < minAmount) {
-      setError(`${profession}s should donate at least BDT ${minAmount}`);
+      setError(`${profession}s should donate at least ৳ ${minAmount}`);
       return;
     }
 
@@ -236,7 +236,7 @@ export default function DonatePage() {
                     <SelectContent>
                       {PROFESSIONS.map((p) => (
                         <SelectItem key={p.value} value={p.value}>
-                          {p.value} (Min: BDT {p.minAmount})
+                          {p.value} (Min: ৳ {p.minAmount})
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -265,7 +265,7 @@ export default function DonatePage() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label htmlFor="amount" className="text-sm font-medium">
-                    Donation Amount: BDT {amount}
+                    Donation Amount: ৳ {amount}
                   </label>
                   <Slider
                     id="amount"
@@ -277,8 +277,8 @@ export default function DonatePage() {
                     className="w-full"
                   />
                   <div className="flex justify-between text-xs text-muted-foreground">
-                    <span>Min: BDT {minAmount}</span>
-                    <span>Max: BDT 100,000</span>
+                    <span>Min: ৳ {minAmount}</span>
+                    <span>Max: ৳ 100,000</span>
                   </div>
                 </div>
               </div>
@@ -299,7 +299,7 @@ export default function DonatePage() {
                 <ul className="text-xs text-muted-foreground space-y-1">
                   {PROFESSIONS.map((p) => (
                     <li key={p.value}>
-                      {p.value}: BDT {p.minAmount} to BDT {p.minAmount * 10}
+                      {p.value}: ৳ {p.minAmount} to ৳ {p.minAmount * 10}
                     </li>
                   ))}
                 </ul>

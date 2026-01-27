@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -10,9 +10,9 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from 'recharts';
-import { donationAPI } from '@/lib/api';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+} from "recharts";
+import { donationAPI } from "@/lib/api";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface DistrictData {
   _id: string;
@@ -30,7 +30,7 @@ export function DistrictChart() {
         const response = await donationAPI.getDistrictStats();
         setData(response.data.slice(0, 10)); // Top 10 districts
       } catch (error) {
-        console.error('Error fetching district stats:', error);
+        console.error("Error fetching district stats:", error);
       } finally {
         setLoading(false);
       }
@@ -63,9 +63,9 @@ export function DistrictChart() {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="_id" angle={-45} textAnchor="end" height={100} />
             <YAxis />
-            <Tooltip formatter={(value) => `BDT ${value}`} />
+            <Tooltip formatter={(value) => `৳ ${value}`} />
             <Legend />
-            <Bar dataKey="total" fill="#8884d8" name="Total Amount (BDT)" />
+            <Bar dataKey="total" fill="#8884d8" name="Total Amount (৳)" />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

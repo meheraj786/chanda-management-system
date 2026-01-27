@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/contexts/AuthContext";
@@ -112,6 +111,17 @@ export default function DonatePage() {
   const { toast } = useToast();
   const router = useRouter();
 
+  console.log(user, "user");
+
+  // lock name input when authenticated user has a username
+  const isNameLocked = Boolean(user?.username);
+
+  useEffect(() => {
+    if (user?.username) {
+      setName(user.username);
+    }
+  }, [user?.username]);
+
   const selectedProfession = PROFESSIONS.find((p) => p.value === profession);
   const minAmount = selectedProfession?.minAmount || 0;
 
@@ -125,7 +135,7 @@ export default function DonatePage() {
     }
 
     if (amount < minAmount) {
-      setError(`${profession}s should donate at least BDT ${minAmount}`);
+      setError(`${profession}s should donate at least ৳ ${minAmount}`);
       return;
     }
 
@@ -165,9 +175,7 @@ export default function DonatePage() {
             <h2 className="text-2xl font-bold mb-2">
               বিবেকের কাছে হার মানার জন্য ধন্যবাদ!
             </h2>
-            <p className="text-muted-foreground mb-4">
-              চাঁদা এন্ট্রি হইছে।
-            </p>
+            <p className="text-muted-foreground mb-4">চাঁদা এন্ট্রি হইছে।</p>
             <p className="text-sm text-muted-foreground">
               এবার তোমাকে আবার গিল্টি করতে হোমে পাঠাচ্ছি...
             </p>
@@ -197,7 +205,9 @@ export default function DonatePage() {
       <div className="container mx-auto px-4 py-8">
         <Card className="w-full max-w-2xl mx-auto">
           <CardHeader>
-            <CardTitle className="text-3xl">চাঁন্দা ট্রান্সফার পোর্টাল</CardTitle>
+            <CardTitle className="text-3xl">
+              চাঁন্দা ট্রান্সফার পোর্টাল
+            </CardTitle>
             <p className="text-muted-foreground mt-2">
               গিল্ট টু ক্যাশ: কার্ড ছাড়া, সব ফেক, কিন্তু ফিলিং রিয়েল! 😂
             </p>
@@ -212,21 +222,24 @@ export default function DonatePage() {
 
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium">
-                  নাম  *
+                  নাম *
                 </label>
                 <Input
                   id="name"
                   placeholder="Your name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    if (!isNameLocked) setName(e.target.value);
+                  }}
                   required
+                  disabled={isNameLocked}
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="profession" className="text-sm font-medium">
-                    পেশা  *
+                    পেশা *
                   </label>
                   <Select value={profession} onValueChange={setProfession}>
                     <SelectTrigger id="profession">
@@ -235,7 +248,7 @@ export default function DonatePage() {
                     <SelectContent>
                       {PROFESSIONS.map((p) => (
                         <SelectItem key={p.value} value={p.value}>
-                          {p.value} (Min: BDT {p.minAmount})
+                          {p.value} (Min: ৳ {p.minAmount})
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -264,7 +277,7 @@ export default function DonatePage() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label htmlFor="amount" className="text-sm font-medium">
-                    চাঁন্দা পরিমান : BDT {amount}
+                    চাঁন্দা পরিমান : ৳ {amount}
                   </label>
                   <Slider
                     id="amount"
@@ -276,8 +289,8 @@ export default function DonatePage() {
                     className="w-full"
                   />
                   <div className="flex justify-between text-xs text-muted-foreground">
-                    <span>Min: BDT {minAmount}</span>
-                    <span>Max: BDT 100,000</span>
+                    <span>Min: ৳ {minAmount}</span>
+                    <span>Max: ৳ 100,000</span>
                   </div>
                 </div>
               </div>
@@ -293,12 +306,12 @@ export default function DonatePage() {
 
               <div className="bg-muted p-4 rounded-lg">
                 <p className="text-sm font-medium mb-2">
-                 পেশাভিত্তিক প্রস্তাবিত চাঁন্দা পরিমান:
+                  পেশাভিত্তিক প্রস্তাবিত চাঁন্দা পরিমান:
                 </p>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   {PROFESSIONS.map((p) => (
                     <li key={p.value}>
-                      {p.value}: BDT {p.minAmount} to BDT {p.minAmount * 10}
+                      {p.value}: ৳ {p.minAmount} to ৳ {p.minAmount * 10}
                     </li>
                   ))}
                 </ul>

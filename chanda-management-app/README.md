@@ -260,7 +260,7 @@ To seed the database:
 The application includes a collection of guilt-inducing messages that appear as toasts every 20 seconds:
 
 - "Your district is lagging in chanda! Donate now?"
-- "Other engineers donated BDT 50,000 last week. Your move?"
+- "Other engineers donated ৳ 50,000 last week. Your move?"
 - "The leaderboard is calling. Can you hear it?"
 - "Even unemployed people donated more than you. Yikes."
 - ...and many more!
@@ -269,13 +269,13 @@ The application includes a collection of guilt-inducing messages that appear as 
 
 The donation form suggests different minimum amounts based on profession:
 
-- **Doctor**: BDT 5,000
-- **Engineer**: BDT 4,000
-- **Teacher**: BDT 1,000
-- **Businessman**: BDT 10,000
-- **Student**: BDT 10
-- **Unemployed**: BDT 1
-- **Others**: BDT 100
+- **Doctor**: ৳ 5,000
+- **Engineer**: ৳ 4,000
+- **Teacher**: ৳ 1,000
+- **Businessman**: ৳ 10,000
+- **Student**: ৳ 10
+- **Unemployed**: ৳ 1
+- **Others**: ৳ 100
 
 ## Styling
 

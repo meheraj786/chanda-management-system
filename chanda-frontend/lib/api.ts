@@ -21,8 +21,8 @@ api.interceptors.request.use((config) => {
 
 // User endpoints
 export const userAPI = {
-  register: (email: string, password: string) =>
-    api.post('/users/register', { email, password }),
+  register: (email: string, password: string, username?: string) =>
+    api.post('/users/register', { email, password, username }),
   login: (email: string, password: string) =>
     api.post('/users/login', { email, password }),
   getCurrentUser: () => api.get('/users/me'),

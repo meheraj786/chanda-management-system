@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { donationAPI } from '@/lib/api';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { useEffect, useState } from "react";
+import { donationAPI } from "@/lib/api";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Table,
   TableBody,
@@ -11,7 +11,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from "@/components/ui/table";
 
 interface LeaderboardEntry {
   rank: number;
@@ -32,7 +32,7 @@ export function Leaderboard() {
         const response = await donationAPI.getLeaderboard();
         setLeaderboard(response.data);
       } catch (error) {
-        console.error('Error fetching leaderboard:', error);
+        console.error("Error fetching leaderboard:", error);
       } finally {
         setLoading(false);
       }
@@ -78,8 +78,10 @@ export function Leaderboard() {
               {leaderboard.map((entry) => (
                 <TableRow key={entry.userId}>
                   <TableCell className="font-bold">#{entry.rank}</TableCell>
-                  <TableCell className="font-medium">{entry.username}</TableCell>
-                  <TableCell>BDT {entry.totalDonated.toLocaleString()}</TableCell>
+                  <TableCell className="font-medium">
+                    {entry.username}
+                  </TableCell>
+                  <TableCell>৳ {entry.totalDonated.toLocaleString()}</TableCell>
                   <TableCell>{entry.donationCount}</TableCell>
                   <TableCell>
                     <Badge variant="secondary">{entry.tier}</Badge>

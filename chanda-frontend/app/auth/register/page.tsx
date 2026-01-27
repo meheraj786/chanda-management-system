@@ -13,6 +13,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -37,7 +38,7 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      await register(email, password);
+      await register(email, password, username);
       router.push("/dashboard");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Registration failed");
@@ -64,6 +65,20 @@ export default function RegisterPage() {
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
+
+            <div className="space-y-2">
+              <label htmlFor="username" className="text-sm font-medium">
+                Name
+              </label>
+              <Input
+                id="username"
+                type="text"
+                placeholder="Name"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
 
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-medium">

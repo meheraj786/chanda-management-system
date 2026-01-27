@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   PieChart,
   Pie,
@@ -8,9 +8,9 @@ import {
   Legend,
   Tooltip,
   ResponsiveContainer,
-} from 'recharts';
-import { donationAPI } from '@/lib/api';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+} from "recharts";
+import { donationAPI } from "@/lib/api";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ProfessionData {
   _id: string;
@@ -18,7 +18,15 @@ interface ProfessionData {
   count: number;
 }
 
-const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7c7c', '#8dd1e1', '#d084d0', '#ffb347'];
+const COLORS = [
+  "#8884d8",
+  "#82ca9d",
+  "#ffc658",
+  "#ff7c7c",
+  "#8dd1e1",
+  "#d084d0",
+  "#ffb347",
+];
 
 export function ProfessionChart() {
   const [data, setData] = useState<ProfessionData[]>([]);
@@ -35,7 +43,7 @@ export function ProfessionChart() {
         }));
         setData(formattedData);
       } catch (error) {
-        console.error('Error fetching profession stats:', error);
+        console.error("Error fetching profession stats:", error);
       } finally {
         setLoading(false);
       }
@@ -70,16 +78,19 @@ export function ProfessionChart() {
               cx="50%"
               cy="50%"
               labelLine={false}
-              label={({ name, value }) => `${name}: BDT ${value}`}
+              label={({ name, value }) => `${name}: ৳ ${value}`}
               outerRadius={80}
               fill="#8884d8"
               dataKey="value"
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
               ))}
             </Pie>
-            <Tooltip formatter={(value) => `BDT ${value}`} />
+            <Tooltip formatter={(value) => `৳ ${value}`} />
           </PieChart>
         </ResponsiveContainer>
       </CardContent>

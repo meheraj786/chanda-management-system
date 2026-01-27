@@ -13,6 +13,7 @@ import { Leaderboard } from "@/components/Leaderboard";
 import bannerBg from "@/public/bannerImg.png";
 import { useEffect, useState } from "react";
 import { donationAPI } from "@/lib/api";
+import { Donations } from "@/components/Donations";
 
 export default function HomePage() {
   const { isAuthenticated, user, logout } = useAuth();
@@ -163,6 +164,9 @@ export default function HomePage() {
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <ExpenseChart />
           <Leaderboard />
+        </section>
+        <section className="grid grid-cols-1">
+          <Donations />
         </section>
 
         {/* CTA Section */}
