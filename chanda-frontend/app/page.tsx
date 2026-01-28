@@ -48,15 +48,16 @@ export default function HomePage() {
       <header className="border-b sticky top-0 bg-background/95 backdrop-blur z-9999">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="text-2xl font-bold"> 💰 চাঁন্দা Management</div>
+            <div className="md:text-2xl text-xl font-bold"> 💰 চাঁন্দা Management</div>
           </div>
 
-          <nav className="flex items-center gap-4">
+          <nav className="flex items-center md:gap-4 gap-1">
             {isAuthenticated ? (
               <>
                 <span className="text-sm text-muted-foreground">
                   স্বাগতম, {user?.email?.split("@")[0]}
                 </span>
+                <div className="flex flex-col md:flex-row">
                 <Link href="/dashboard">
                   <Button variant="outline" size="sm">
                     চাঁদার ড্যাশ
@@ -65,6 +66,8 @@ export default function HomePage() {
                 <Button onClick={logout} variant="outline" size="sm">
                   আউট
                 </Button>
+                </div>
+
               </>
             ) : (
               <>
