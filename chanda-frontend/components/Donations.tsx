@@ -94,7 +94,7 @@ export function Donations() {
 
 
 </CardContent>
-  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
+  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-background to-transparent" />
     </Card>
   );
 }

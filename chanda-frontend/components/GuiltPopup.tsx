@@ -56,13 +56,12 @@ export function GuiltPopup() {
       toast({
         title: msg.title,
         description: msg.description,
-        duration: 10000,
+        duration: 3000,
       });
     };
 
-    // show one immediately, then every 5 seconds
     showRandom();
-    const interval = setInterval(showRandom, 5000);
+    const interval = setInterval(showRandom, 15000);
 
     return () => clearInterval(interval);
   }, [toast]);
