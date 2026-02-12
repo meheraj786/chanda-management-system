@@ -10,6 +10,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
+
 export function EntryGuiltModal() {
   const [isOpen, setIsOpen] = useState(false);
 
