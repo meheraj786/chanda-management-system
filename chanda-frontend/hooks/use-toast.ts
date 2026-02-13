@@ -1,6 +1,4 @@
-'use client'
-
-// Inspired by react-hot-toast library
+'use client%725
 import * as React from 'react'
 
 import type { ToastActionElement, ToastProps } from '@/components/ui/toast'
